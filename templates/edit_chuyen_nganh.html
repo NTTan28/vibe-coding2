@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Sửa chuyên ngành</h3>
+
+<form method="post" action="">
+  <input name="ten" placeholder="Tên" value="{{ c[1] }}" class="form-control mb-1" required>
+  <input name="mota" placeholder="Mô tả" value="{{ c[2] }}" class="form-control mb-1" required>
+  <button class="btn btn-success">Lưu thay đổi</button>
+  <a href="/chuyen_nganh" class="btn btn-secondary">Hủy</a>
+</form>
+
+{% endblock %}

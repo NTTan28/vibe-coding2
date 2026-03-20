@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Sửa độc giả</h3>
+
+<form method="post">
+
+<label>Họ tên</label>
+<input name="ten" value="{{ u[1] }}" class="form-control">
+
+<label>Lớp</label>
+<input name="lop" value="{{ u[2] }}" class="form-control">
+
+<label>Ngày sinh</label>
+<input type="date" name="ngaysinh" value="{{ u[3] }}" class="form-control">
+
+<label>Giới tính</label>
+<select name="gioitinh" class="form-control">
+<option {% if u[4]=='Nam' %}selected{% endif %}>Nam</option>
+<option {% if u[4]=='Nữ' or u[4]=='Nu' %}selected{% endif %}>Nữ</option>
+</select>
+
+<br>
+<button class="btn btn-warning">Cập nhật</button>
+
+</form>
+
+{% endblock %}

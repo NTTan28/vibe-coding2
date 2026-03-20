@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Mượn sách</h3>
+
+<form method="post" action="/borrow_book">
+
+<!-- CHỌN SÁCH -->
+<label>Chọn sách</label>
+<select name="sach_id" class="form-control mb-2" required>
+{% for b in books %}
+<option value="{{ b[0] }}">
+Mã: {{ b[0] }} - {{ b[2] }} ({{ b[3] }})
+</option>
+{% endfor %}
+</select>
+
+<!-- CHỌN ĐỘC GIẢ -->
+<label>Chọn độc giả</label>
+<select name="user_id" class="form-control mb-2" required>
+{% for u in users %}
+<option value="{{ u[0] }}">
+{{ u[1] }} - {{ u[2] }}
+</option>
+{% endfor %}
+</select>
+
+<button class="btn btn-success">Mượn</button>
+
+</form>
+
+{% endblock %}

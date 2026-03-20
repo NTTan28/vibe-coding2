@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Sửa sách</h3>
+
+<form method="post">
+
+<!-- CHỌN ĐẦU SÁCH -->
+<label>Đầu sách</label>
+<select name="ma_dau_sach" class="form-control mb-2">
+{% for d in dau_sach %}
+<option value="{{ d[0] }}"
+{% if d[0]|string == b[1]|string %}selected{% endif %}>
+{{ d[1] }}
+</option>
+{% endfor %}
+</select>
+
+<!-- TÌNH TRẠNG -->
+<label>Tình trạng</label>
+<select name="tinh_trang" class="form-control mb-2">
+<option value="Còn" {% if b[2]=='Còn' %}selected{% endif %}>Còn</option>
+<option value="Đang mượn" {% if b[2]=='Đang mượn' %}selected{% endif %}>Đang mượn</option>
+<option value="Mất" {% if b[2]=='Mất' %}selected{% endif %}>Mất</option>
+</select>
+
+<!-- NGÀY NHẬP -->
+<label>Ngày nhập</label>
+<input type="date" name="ngay_nhap" value="{{ b[3] }}" class="form-control mb-2">
+
+<button class="btn btn-warning">Cập nhật</button>
+
+</form>
+
+{% endblock %}

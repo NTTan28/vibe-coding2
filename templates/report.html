@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Top 10 sách được mượn nhiều nhất</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên sách</th>
+            <th>Số lần mượn</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in top %}
+        <tr>
+            <td>{{ t[0] }}</td>
+            <td>{{ t[1] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Danh sách độc giả chưa trả sách</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã phiếu</th>
+            <th>Tên sách</th>
+            <th>Độc giả</th>
+            <th>Ngày mượn</th>
+            <th>Tình trạng</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l in late %}
+        <tr>
+            <td>{{ l[0] }}</td>
+            <td>{{ l[1] }}</td>
+            <td>{{ l[2] }}</td>
+            <td>{{ l[3] }}</td>
+            <td>{{ l[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

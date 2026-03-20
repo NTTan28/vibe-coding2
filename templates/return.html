@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Trả sách</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã phiếu</th>
+            <th>Tên sách</th>
+            <th>Độc giả</th>
+            <th>Ngày mượn</th>
+            <th>Tình trạng</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in data %}
+        <tr>
+            <td>{{ r[0] }}</td>  {# ma_phieu #}
+            <td>{{ r[1] }}</td>  {# ten_sach #}
+            <td>{{ r[2] }}</td>  {# ho_ten #}
+            <td>{{ r[3] }}</td>  {# ngay_muon #}
+            <td>{{ r[4] }}</td>  {# tinh_trang #}
+            <td>
+                {% if r[4] == 'Đang mượn' %}
+                <form method="post" action="/return_book">
+                    <input type="hidden" name="ma_phieu" value="{{ r[0] }}">
+                    <input type="hidden" name="ma_sach" value="{{ r[5] }}">
+                    <button type="submit" class="btn btn-success btn-sm">Trả</button>
+                </form>
+                {% else %}
+                <span class="text-muted">Đã trả</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

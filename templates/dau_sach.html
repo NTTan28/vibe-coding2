@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Đầu sách</h3>
+
+<form method="post" action="/add_dau_sach">
+<input name="ten" placeholder="Tên sách">
+<input name="nxb" placeholder="NXB">
+<input name="trang" placeholder="Số trang">
+<input name="size" placeholder="Kích thước">
+<input name="tacgia" placeholder="Tác giả">
+<input name="soluong" placeholder="Số lượng">
+
+<select name="ma_chuyen_nganh">
+{% for c in chuyen_nganh %}
+<option value="{{ c[0] }}">{{ c[1] }}</option>
+{% endfor %}
+</select>
+
+<button>Thêm</button>
+</form>
+
+<hr>
+
+<table class="table">
+<tr>
+<th>ID</th>
+<th>Tên</th>
+<th>NXB</th>
+<th>Số lượng</th>
+<th>Chuyên ngành</th>
+<th>Action</th>
+</tr>
+
+{% for d in data %}
+<tr>
+<td>{{ d[0] }}</td>
+<td>{{ d[1] }}</td>
+<td>{{ d[2] }}</td>
+<td>{{ d[6] }}</td>
+<td>{{ d[8] }}</td> <!-- FIX: hiển thị tên chuyên ngành -->
+
+<td>
+<a href="/edit_dau_sach/{{ d[0] }}">Sửa</a> |
+<a href="/delete_dau_sach/{{ d[0] }}">Xóa</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

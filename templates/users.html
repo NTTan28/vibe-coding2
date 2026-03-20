@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Độc giả</h3>
+
+<form method="post" action="/add_user">
+<input name="ten" placeholder="Tên">
+<input name="lop" placeholder="Lớp">
+<input type="date" name="ngaysinh">
+<select name="gioitinh">
+<option>Nam</option>
+<option>Nữ</option>
+</select>
+<button>Thêm</button>
+</form>
+
+<table class="table">
+<tr>
+<th>ID</th><th>Tên</th><th>Lớp</th><th>Ngày sinh</th><th>Giới tính</th><th></th>
+</tr>
+
+{% for u in users %}
+<tr>
+<td>{{ u[0] }}</td>
+<td>{{ u[1] }}</td>
+<td>{{ u[2] }}</td>
+<td>{{ u[3] }}</td>
+<td>{{ u[4] }}</td>
+<td>
+<td>
+<a href="/edit_user/{{ u[0] }}">Sửa</a> |
+<a href="/delete_user/{{ u[0] }}">Xóa</a>
+</td>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

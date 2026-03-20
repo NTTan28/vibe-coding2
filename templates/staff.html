@@ -1,0 +1,27 @@
+<h2>Danh sách nhân viên</h2>
+<table border="1">
+<tr><th>ID</th><th>Tên</th><th>Username</th><th>Role</th><th>Hành động</th></tr>
+{% for u in users %}
+<tr>
+<td>{{ u.ma_nv }}</td>
+<td>{{ u.ten_nv }}</td>
+<td>{{ u.username }}</td>
+<td>{{ u.role }}</td>
+<td>
+    <a href="/staff/delete/{{ u.ma_nv }}">Xóa</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+<h3>Thêm nhân viên mới</h3>
+<form action="/staff/add" method="post">
+<input name="ten_nv" placeholder="Tên nhân viên">
+<input name="username" placeholder="Username">
+<input name="password" placeholder="Password">
+<select name="role">
+<option value="staff">Staff</option>
+<option value="admin">Admin</option>
+</select>
+<button>Thêm</button>
+</form>

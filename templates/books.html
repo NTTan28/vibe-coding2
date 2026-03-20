@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Sách</h3>
+
+<form method="post" action="/add_book">
+
+<label>Đầu sách</label>
+<select name="ma_dau_sach" required>
+{% for d in dau_sach %}
+<option value="{{ d[0] }}">{{ d[1] }}</option>
+{% endfor %}
+</select>
+
+<label>Tình trạng</label>
+<select name="tinh_trang">
+<option value="Còn">Còn</option>
+<option value="Đang mượn">Đang mượn</option>
+<option value="Mất">Mất</option>
+</select>
+
+<label>Ngày nhập</label>
+<input type="date" name="ngay_nhap" value="{{ now }}" required>
+
+<button class="btn btn-success mt-2">Thêm</button>
+
+</form>
+
+<hr>
+
+<table class="table table-bordered">
+<tr>
+<th>ID</th>
+<th>Mã đầu sách</th> 
+<th>Tên sách</th>
+<th>Tình trạng</th>
+<th>Ngày nhập</th>
+<th>Action</th>
+</tr>
+
+{% for b in books %}
+<tr>
+<td>{{ b[0] }}</td>
+<td>{{ b[1] }}</td>
+<td>{{ b[2] }}</td>
+<td>{{ b[3] }}</td>
+<td>{{ b[4] }}</td>
+
+<td>
+<a href="/edit_book/{{ b[0] }}" class="btn btn-warning btn-sm">Sửa</a>
+<a href="/delete_book/{{ b[0] }}" 
+   class="btn btn-danger btn-sm"
+   onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+</td>
+
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Sửa đầu sách</h3>
+
+<form method="post">
+
+<input name="ten" value="{{ d[1] }}" class="form-control mb-2">
+<input name="nxb" value="{{ d[2] }}" class="form-control mb-2">
+<input name="trang" value="{{ d[3] }}" class="form-control mb-2">
+<input name="size" value="{{ d[4] }}" class="form-control mb-2">
+<input name="tacgia" value="{{ d[5] }}" class="form-control mb-2">
+<input name="soluong" value="{{ d[6] }}" class="form-control mb-2">
+
+<select name="ma_chuyen_nganh" class="form-control mb-2">
+{% for c in chuyen_nganh %}
+<option value="{{ c[0] }}"
+{% if c[0]|string == d[7]|string %}selected{% endif %}>
+{{ c[1] }}
+</option>
+{% endfor %}
+</select>
+
+<button class="btn btn-warning">Cập nhật</button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Chuyên ngành</h3>
+
+<form method="post" action="/add_chuyen_nganh" class="mb-3">
+  <input name="ten" placeholder="Tên" class="form-control mb-1" required>
+  <input name="mota" placeholder="Mô tả" class="form-control mb-1" required>
+  <button class="btn btn-primary">Thêm</button>
+</form>
+
+<table class="table table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Tên</th>
+    <th>Mô tả</th>
+    <th>Hành động</th>
+  </tr>
+  {% for c in data %}
+  <tr>
+    <td>{{ c[0] }}</td>
+    <td>{{ c[1] }}</td>
+    <td>{{ c[2] }}</td>
+    <td>
+      <a href="/edit_chuyen_nganh/{{ c[0] }}" class="btn btn-sm btn-warning">Sửa</a>
+      <a href="/delete_chuyen_nganh/{{ c[0] }}" class="btn btn-sm btn-danger" onclick="return confirm('Xác nhận xóa?')">Xóa</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
